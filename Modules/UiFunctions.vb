@@ -11,6 +11,7 @@ Module UiFunctions
     Public aircraftreg = ""
     Public startstatus = ""
     Public fsconectionstatus
+    Public maxpax
     Public Function logname()
 
         Dim logfilename As String = (path & "\APVacars\" & ymd & "-" & FrmMain.lblDeparture.Text & "-" & FrmMain.lblArrival.Text & ".txt")
@@ -69,6 +70,7 @@ Module UiFunctions
                     frmFlightInformation.lblFlightLevel.Text = value(3)
                     frmFlightInformation.lblRoute.Text = value(6)
                     aircraftreg = value(9)
+                    maxpax = value(11)
                 ElseIf value(0) = "2" Then
                     MsgBox("Aircraft is our of service")
                 ElseIf value(0) = "3" Then

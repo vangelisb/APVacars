@@ -82,7 +82,7 @@ Module FlightLog
     End Sub
     Public Sub sendlog()
         FlightLog.pirepdecode(reportname)
-        Dim passengers As Integer = "1" ' CInt(Int((maxpax * Rnd()) + 1))
+        Dim passengers As Integer = CInt(Int((maxpax * Rnd()) + 1))
         MsgBox(GetPageAsString("pirep", "&pilotID=" & _
                             My.Settings.PilotId & "&flightNumber=" & _
                             flightnumber & "&depICAO=" & departure & "&arrICAO=" & destination & "&aircraftreg=" & aircraftreg & _
