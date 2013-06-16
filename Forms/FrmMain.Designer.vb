@@ -212,7 +212,7 @@ Partial Class FrmMain
         Me.lblFlightNumber.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.lblFlightNumber.Location = New System.Drawing.Point(90, 47)
         Me.lblFlightNumber.Name = "lblFlightNumber"
-        Me.lblFlightNumber.Size = New System.Drawing.Size(56, 16)
+        Me.lblFlightNumber.Size = New System.Drawing.Size(73, 16)
         Me.lblFlightNumber.TabIndex = 23
         '
         'lblFlightNumberTag
@@ -227,7 +227,7 @@ Partial Class FrmMain
         'lblArrival
         '
         Me.lblArrival.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.lblArrival.Location = New System.Drawing.Point(369, 47)
+        Me.lblArrival.Location = New System.Drawing.Point(405, 47)
         Me.lblArrival.Name = "lblArrival"
         Me.lblArrival.Size = New System.Drawing.Size(48, 16)
         Me.lblArrival.TabIndex = 21
@@ -235,7 +235,7 @@ Partial Class FrmMain
         'lblArrivalTag
         '
         Me.lblArrivalTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblArrivalTag.Location = New System.Drawing.Point(294, 47)
+        Me.lblArrivalTag.Location = New System.Drawing.Point(314, 47)
         Me.lblArrivalTag.Name = "lblArrivalTag"
         Me.lblArrivalTag.Size = New System.Drawing.Size(85, 16)
         Me.lblArrivalTag.TabIndex = 20
@@ -244,7 +244,7 @@ Partial Class FrmMain
         'lblDeparture
         '
         Me.lblDeparture.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.lblDeparture.Location = New System.Drawing.Point(247, 47)
+        Me.lblDeparture.Location = New System.Drawing.Point(261, 47)
         Me.lblDeparture.Name = "lblDeparture"
         Me.lblDeparture.Size = New System.Drawing.Size(48, 16)
         Me.lblDeparture.TabIndex = 19
@@ -252,7 +252,7 @@ Partial Class FrmMain
         'lblDepartureTag
         '
         Me.lblDepartureTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblDepartureTag.Location = New System.Drawing.Point(152, 47)
+        Me.lblDepartureTag.Location = New System.Drawing.Point(169, 47)
         Me.lblDepartureTag.Name = "lblDepartureTag"
         Me.lblDepartureTag.Size = New System.Drawing.Size(103, 22)
         Me.lblDepartureTag.TabIndex = 18
