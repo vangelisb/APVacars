@@ -31,7 +31,7 @@ Module UiFunctions
         If version > My.Application.Info.Version.ToString Then
             Dim box = MsgBox("There is a new version of APVA", MsgBoxStyle.OkCancel)
             If box = DialogResult.OK Then
-                Process.Start("http://www.baggelis.com/APVacars.7z")
+                Process.Start("http://www.baggelis.com/APVacars.zip")
                 FrmMain.Close()
             End If
         End If

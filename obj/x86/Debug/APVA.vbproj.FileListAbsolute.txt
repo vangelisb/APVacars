@@ -85,3 +85,7 @@ C:\Users\Vangelisb\Desktop\APVacars\obj\x86\Debug\APVA.vbproj.GenerateResource.C
 C:\Users\Vangelisb\Desktop\APVacars\obj\x86\Debug\el-GR\APVA.resources.dll
 C:\Users\Vangelisb\Desktop\APVacars\obj\x86\Debug\APVA.exe.manifest
 C:\Users\Vangelisb\Desktop\APVacars\obj\x86\Debug\APVA.application
+C:\Users\Vangelisb\Desktop\git\APVacars\bin\Debug\APVA.exe.config
+C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.exe
+C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.xml
+C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.pdb
