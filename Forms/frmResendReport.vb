@@ -18,6 +18,8 @@
         lblDeparture.Text = FlightLog.departure
         lblArrival.Text = FlightLog.destination
         lblAcRegistration.Text = FlightLog.Aircraftid
+        lblaircraftused.Text = FlightLog.aircraftused
+        lbllandingrate.Text = FlightLog.landingrate
         lblRoute.Text = FlightLog.route
         lblFLightTime.Text = FlightLog.flighttime
         lblFuelUsed.Text = FlightLog.fuelused
@@ -37,6 +39,6 @@
         MsgBox(GetPageAsString("pirep", "&pilotID=" & _
                             My.Settings.PilotId & "&flightNumber=" & _
                             FlightLog.flightnumber & "&depICAO=" & FlightLog.departure & "&arrICAO=" & FlightLog.destination & "&aircraftreg=" & FlightLog.Aircraftid & _
-                            "&route=" & FlightLog.route & "&flightTime=" & FlightLog.flighttime & "&log=" & log & "&fuelused=" & FlightLog.fuelused & ""))
+                            "&route=" & FlightLog.route & "&flightTime=" & FlightLog.flighttime & "&log=" & log & "&fuelused=" & FlightLog.fuelused & "&landingrate=" & FlightLog.landingrate & ""))
     End Sub
 End Class

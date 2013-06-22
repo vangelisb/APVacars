@@ -25,23 +25,40 @@ Module UiFunctions
         Return reportfilename
     End Function
     Public Sub Startup()
+
+        Dim version As String = webrequesttoget("http://baggelis.com/versionAPva.php?apvaversion=apvaversion")
+
+        If version > My.Application.Info.Version.ToString Then
+            Dim box = MsgBox("There is a new version of APVA", MsgBoxStyle.OkCancel)
+            If box = DialogResult.OK Then
+                Process.Start("http://www.baggelis.com/APVacars.7z")
+                FrmMain.Close()
+            End If
+        End If
+
+        fsuipcconnect()
+
+
+    End Sub
+    Public Sub fsuipcconnect()
         Try
+           
             ' Attempt to open a connection to FSUIPC (running on any version of Flight Sim)
             FSUIPCConnection.Open()
             FrmMain.FsUipcStatuslbl.Text = "Fsuipc Connected"
             FrmMain.FsUipcStatuslbl.BackColor = Color.Green
             fsconectionstatus = "1"
+            FrmMain.ConnectToolStripMenuItem.Enabled = False
+            FrmMain.DisconnectToolStripMenuItem.Enabled = True
         Catch ex As Exception
             fsconectionstatus = "0"
             ' Badness occurred - show the error message
             FSUIPCConnection.Close()
             FrmMain.FsUipcStatuslbl.Text = "Fsuipc Disconnected"
             FrmMain.FsUipcStatuslbl.BackColor = Color.Red
+            FrmMain.ConnectToolStripMenuItem.Enabled = True
 
         End Try
-
-        
-
     End Sub
     Public Sub Connect()
         Try
@@ -100,8 +117,8 @@ Module UiFunctions
           FrmMain.lblDeparture.Text & vbCrLf & "Destination=" & Chr(32) & FrmMain.lblArrival.Text & vbCrLf
             My.Computer.FileSystem.WriteAllText(logname, vt, True)
             Dim xml As String = "<xmlreport>" & vbCrLf & "<PilotID>" & My.Settings.PilotId & "</PilotID>" & vbCrLf & "<Flightnumber>" & FrmMain.lblFlightNumber.Text & "</Flightnumber>" & vbCrLf & "<Departure>" & _
-                FrmMain.lblDeparture.Text & "</Departure>" & vbCrLf & "<Destination>" & FrmMain.lblArrival.Text & "</Destination>" & vbCrLf & "<AircraftRegistration>" & FlightLog.Aircraftid & "</AircraftRegistration>" & vbCrLf & _
-                "<Source>" & "APVacars" & "</Source>" & vbCrLf & "<Route>" & frmFlightInformation.lblRoute.Text & "</Route>" & vbCrLf & "<log>"
+                FrmMain.lblDeparture.Text & "</Departure>" & vbCrLf & "<Destination>" & FrmMain.lblArrival.Text & "</Destination>" & vbCrLf & "<AircraftRegistration>" & FlightLog.Aircraftid & "</AircraftRegistration>" & vbCrLf & "<AircraftUsed>" & getairplaneused() & "</AircraftUsed>" & vbCrLf & _
+                "<Source>" & "APVacars" & "</Source>" & vbCrLf & "<Route>" & frmFlightInformation.lblRoute.Text & "</Route>" & vbCrLf & "<log>" & "Aircraft Used in flight is" & Chr(32) & getairplaneused() & "*"
             My.Computer.FileSystem.WriteAllText(reportname, xml, True)
         End If
     End Sub

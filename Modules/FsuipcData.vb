@@ -22,13 +22,16 @@ Module FsuipcData
     Public player As Offset(Of Long) = New Offset(Of Long)(&H568)
     Public playerLongitude As Offset(Of Long) = New Offset(Of Long)(&H568)
     Public playerLatitude As Offset(Of Long) = New Offset(Of Long)(&H560)
+    Public aircraftused As Offset(Of String) = New Offset(Of String)(&H3D00, 48)
     Public startTime As DateTime
     Public flighttime As String
     Dim tookof As String = "false"
+    Dim departed As String = "false"
     Public fuelstarted As String
     Public fuelended As String
     Public fuelconsumed As String
     Public fuelconsumedrounded As String
+
 
 
     Public Function getparkingbrake()
@@ -171,6 +174,9 @@ Module FsuipcData
         heading2 = Split(heading1, ".")
         Return heading2(0)
     End Function
+    Public Function getairplaneused()
+        Return aircraftused.Value
+    End Function
     Public Function getlandinglights()
 
         Return LandingLights.Value(0)  '0 = Off, 1 = On.
@@ -197,13 +203,8 @@ Module FsuipcData
     Public Sub drivestarttmr()
         Try
             If fsconectionstatus = "1" Then
-
-
                 FrmMain.FsUipcStatuslbl.Text = "Fsuipc Connected"
                 FrmMain.FsUipcStatuslbl.BackColor = Color.Green
-                FrmMain.LblTime.Text = Date.Now
-                FrmMain.StatusLblPilotId.Text = My.Settings.PilotId
-                FrmMain.StatusLblPilotId.Font = New Font(FrmMain.StatusLblPilotId.Font, FontStyle.Bold)
                 FSUIPCConnection.Process()
                 FrmMain.lblTAS.Text = getairspeed()
                 FrmMain.lblAlt.Text = getaltitude()
@@ -231,19 +232,27 @@ Module FsuipcData
     End Sub
     Public Function getflightstatus()
         Dim status As String = "Boarding"
-        If getonground() = "True" And getparkingbrake() = "True" Then
+        If getonground() = "True" And tookof = "True" And getparkingbrake() = "True" Then
+            status = "Ofloading Passengers"
+        ElseIf getonground() = "True" And tookof = "True" And getairspeed() <= 20 Then
+            status = "Taxiing to gate"
+        ElseIf getonground() = "True" And getparkingbrake() = "True" Then
             status = "Boarding"
         ElseIf getonground() = "True" And tookof = "True" Then
             status = "Landed"
         ElseIf getparkingbrake() = "False" And getairspeed() <= 20 Then
             status = "Taxiing"
-        ElseIf getparkingbrake() = "False" And (getaltitude() >= 10 And getaltitude() <= 1000) Then
+            departed = "false"
+        ElseIf getparkingbrake() = "False" And (getaltitude() >= 10 And getaltitude() <= 1000) And departed = "True" Then
+            status = "Approaching"
+        ElseIf getparkingbrake() = "False" And (getaltitude() >= 10 And getaltitude() <= 1000) And departed = "false" Then
             status = "Departing"
         ElseIf getonground() = "False" And getverticalspeed() >= 200 Then
             status = "Climbing"
             tookof = "True"
+            departed = "True"
         ElseIf getonground() = "False" And getverticalspeed() <= -200 Then
-            status = "Desending"
+            status = "Descending"
         Else
             status = "Cruise"
         End If

@@ -46,6 +46,10 @@ Partial Class frmResendReport
         Me.lblPilotID = New System.Windows.Forms.Label()
         Me.lblPilotIDTag = New System.Windows.Forms.Label()
         Me.RichtxtboxLog = New System.Windows.Forms.RichTextBox()
+        Me.lblaircraftused = New System.Windows.Forms.Label()
+        Me.lblaircraftusedtag = New System.Windows.Forms.Label()
+        Me.lbllandingrate = New System.Windows.Forms.Label()
+        Me.lbllandingratetag = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -126,7 +130,7 @@ Partial Class frmResendReport
         'lblRouteTag
         '
         Me.lblRouteTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblRouteTag.Location = New System.Drawing.Point(12, 167)
+        Me.lblRouteTag.Location = New System.Drawing.Point(12, 191)
         Me.lblRouteTag.Name = "lblRouteTag"
         Me.lblRouteTag.Size = New System.Drawing.Size(78, 22)
         Me.lblRouteTag.TabIndex = 27
@@ -135,7 +139,7 @@ Partial Class frmResendReport
         'lblFlightTimeTag
         '
         Me.lblFlightTimeTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblFlightTimeTag.Location = New System.Drawing.Point(12, 189)
+        Me.lblFlightTimeTag.Location = New System.Drawing.Point(12, 213)
         Me.lblFlightTimeTag.Name = "lblFlightTimeTag"
         Me.lblFlightTimeTag.Size = New System.Drawing.Size(78, 22)
         Me.lblFlightTimeTag.TabIndex = 28
@@ -144,7 +148,7 @@ Partial Class frmResendReport
         'lblFuelUsedTag
         '
         Me.lblFuelUsedTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblFuelUsedTag.Location = New System.Drawing.Point(12, 211)
+        Me.lblFuelUsedTag.Location = New System.Drawing.Point(12, 235)
         Me.lblFuelUsedTag.Name = "lblFuelUsedTag"
         Me.lblFuelUsedTag.Size = New System.Drawing.Size(78, 22)
         Me.lblFuelUsedTag.TabIndex = 29
@@ -153,7 +157,7 @@ Partial Class frmResendReport
         'lblLogTag
         '
         Me.lblLogTag.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblLogTag.Location = New System.Drawing.Point(12, 233)
+        Me.lblLogTag.Location = New System.Drawing.Point(12, 257)
         Me.lblLogTag.Name = "lblLogTag"
         Me.lblLogTag.Size = New System.Drawing.Size(78, 22)
         Me.lblLogTag.TabIndex = 30
@@ -194,7 +198,7 @@ Partial Class frmResendReport
         'lblRoute
         '
         Me.lblRoute.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblRoute.Location = New System.Drawing.Point(128, 167)
+        Me.lblRoute.Location = New System.Drawing.Point(128, 191)
         Me.lblRoute.Name = "lblRoute"
         Me.lblRoute.Size = New System.Drawing.Size(78, 22)
         Me.lblRoute.TabIndex = 35
@@ -202,7 +206,7 @@ Partial Class frmResendReport
         'lblFLightTime
         '
         Me.lblFLightTime.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblFLightTime.Location = New System.Drawing.Point(128, 189)
+        Me.lblFLightTime.Location = New System.Drawing.Point(128, 213)
         Me.lblFLightTime.Name = "lblFLightTime"
         Me.lblFLightTime.Size = New System.Drawing.Size(78, 22)
         Me.lblFLightTime.TabIndex = 36
@@ -210,7 +214,7 @@ Partial Class frmResendReport
         'lblFuelUsed
         '
         Me.lblFuelUsed.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblFuelUsed.Location = New System.Drawing.Point(128, 211)
+        Me.lblFuelUsed.Location = New System.Drawing.Point(128, 235)
         Me.lblFuelUsed.Name = "lblFuelUsed"
         Me.lblFuelUsed.Size = New System.Drawing.Size(78, 22)
         Me.lblFuelUsed.TabIndex = 37
@@ -234,18 +238,56 @@ Partial Class frmResendReport
         '
         'RichtxtboxLog
         '
-        Me.RichtxtboxLog.Location = New System.Drawing.Point(131, 233)
+        Me.RichtxtboxLog.Location = New System.Drawing.Point(131, 263)
         Me.RichtxtboxLog.Name = "RichtxtboxLog"
         Me.RichtxtboxLog.ReadOnly = True
         Me.RichtxtboxLog.Size = New System.Drawing.Size(332, 198)
         Me.RichtxtboxLog.TabIndex = 41
         Me.RichtxtboxLog.Text = ""
         '
+        'lblaircraftused
+        '
+        Me.lblaircraftused.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.lblaircraftused.Location = New System.Drawing.Point(128, 167)
+        Me.lblaircraftused.Name = "lblaircraftused"
+        Me.lblaircraftused.Size = New System.Drawing.Size(267, 22)
+        Me.lblaircraftused.TabIndex = 43
+        '
+        'lblaircraftusedtag
+        '
+        Me.lblaircraftusedtag.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.lblaircraftusedtag.Location = New System.Drawing.Point(12, 167)
+        Me.lblaircraftusedtag.Name = "lblaircraftusedtag"
+        Me.lblaircraftusedtag.Size = New System.Drawing.Size(110, 22)
+        Me.lblaircraftusedtag.TabIndex = 42
+        Me.lblaircraftusedtag.Text = "Aircraft Used:"
+        '
+        'lbllandingrate
+        '
+        Me.lbllandingrate.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.lbllandingrate.Location = New System.Drawing.Point(377, 74)
+        Me.lbllandingrate.Name = "lbllandingrate"
+        Me.lbllandingrate.Size = New System.Drawing.Size(78, 22)
+        Me.lbllandingrate.TabIndex = 45
+        '
+        'lbllandingratetag
+        '
+        Me.lbllandingratetag.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.lbllandingratetag.Location = New System.Drawing.Point(261, 74)
+        Me.lbllandingratetag.Name = "lbllandingratetag"
+        Me.lbllandingratetag.Size = New System.Drawing.Size(78, 22)
+        Me.lbllandingratetag.TabIndex = 44
+        Me.lbllandingratetag.Text = "Landing Rate:"
+        '
         'frmResendReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(613, 472)
+        Me.Controls.Add(Me.lbllandingrate)
+        Me.Controls.Add(Me.lbllandingratetag)
+        Me.Controls.Add(Me.lblaircraftused)
+        Me.Controls.Add(Me.lblaircraftusedtag)
         Me.Controls.Add(Me.RichtxtboxLog)
         Me.Controls.Add(Me.lblPilotID)
         Me.Controls.Add(Me.lblPilotIDTag)
@@ -298,4 +340,8 @@ Partial Class frmResendReport
     Friend WithEvents lblPilotID As System.Windows.Forms.Label
     Friend WithEvents lblPilotIDTag As System.Windows.Forms.Label
     Friend WithEvents RichtxtboxLog As System.Windows.Forms.RichTextBox
+    Friend WithEvents lblaircraftused As System.Windows.Forms.Label
+    Friend WithEvents lblaircraftusedtag As System.Windows.Forms.Label
+    Friend WithEvents lbllandingrate As System.Windows.Forms.Label
+    Friend WithEvents lbllandingratetag As System.Windows.Forms.Label
 End Class

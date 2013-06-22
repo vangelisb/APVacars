@@ -7,6 +7,7 @@ Imports System.Windows
 Imports System.Xml.XPath
 
 
+
 Public Class FrmMain
 
     Private Sub TmrGetDataFromFs_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrGetDataFromFs.Tick
@@ -14,6 +15,7 @@ Public Class FrmMain
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         createfolder("reports")
         UiFunctions.Startup()
     End Sub
@@ -82,6 +84,7 @@ Public Class FrmMain
             My.Computer.FileSystem.WriteAllText(logname, vt, True)
             Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "You Landed @ " & Chr(32) & getairspeed() & Chr(32) & "Knots" & Chr(32) & "and with" & Chr(32) & getverticalspeed() & Chr(32) & "Vertival Speed" & "*"
             My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+            FlightLog.landingrate = getverticalspeed()
         ElseIf chkonground.CheckState = CheckState.Unchecked And getairspeed() <= 0 Then
             'Do Nothing
         ElseIf chkonground.CheckState = CheckState.Unchecked And getairspeed() >= 0 Then
@@ -179,7 +182,7 @@ Public Class FrmMain
         BtnStart.Visible = True
         tmrWriteReadLog.Stop()
         TmrAcars.Stop()
-        Dim xml As String = "</log>" & vbCrLf & "<FuelUsed>" & fuelconsumedrounded & "</FuelUsed>" & vbCrLf & "<Flighttime>" & lblFlightTime.Text & "</Flighttime>" & vbCrLf & "</xmlreport>"
+        Dim xml As String = "</log>" & vbCrLf & "<FuelUsed>" & fuelconsumedrounded & "</FuelUsed>" & vbCrLf & "<Flighttime>" & lblFlightTime.Text & "</Flighttime>" & vbCrLf & "<Landingrate>" & FlightLog.landingrate & "</Landingrate>" & vbCrLf & "</xmlreport>"
         My.Computer.FileSystem.WriteAllText(reportname, xml, True)
         GetPageAsString("stopflight", "&pilotID=" & My.Settings.PilotId)
     End Sub
@@ -214,10 +217,22 @@ Public Class FrmMain
     End Sub
 
     Private Sub ConnectToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConnectToolStripMenuItem.Click
-        FSUIPCConnection.Open()
+        UiFunctions.fsuipcconnect()
+        TmrGetDataFromFs.Start()
     End Sub
 
     Private Sub DisconnectToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DisconnectToolStripMenuItem.Click
         FSUIPCConnection.Close()
+        TmrGetDataFromFs.Stop()
+        DisconnectToolStripMenuItem.Enabled = False
+        FsUipcStatuslbl.Text = "Fsuipc Disconnected"
+        FsUipcStatuslbl.BackColor = Color.Red
+        ConnectToolStripMenuItem.Enabled = True
+    End Sub
+
+    Private Sub tmrtime_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrtime.Tick
+        LblTime.Text = Date.Now
+        StatusLblPilotId.Text = My.Settings.PilotId
+        StatusLblPilotId.Font = New Font(StatusLblPilotId.Font, FontStyle.Bold)
     End Sub
 End Class

@@ -74,6 +74,7 @@ Partial Class FrmMain
         Me.btnStopLog = New System.Windows.Forms.Button()
         Me.tmrWriteReadLog = New System.Windows.Forms.Timer(Me.components)
         Me.TmrGetDataFromFs = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrtime = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.gbRTFI.SuspendLayout()
@@ -365,7 +366,7 @@ Partial Class FrmMain
         '
         'BtnStart
         '
-        Me.BtnStart.Location = New System.Drawing.Point(0, 50)
+        Me.BtnStart.Location = New System.Drawing.Point(0, 51)
         Me.BtnStart.Name = "BtnStart"
         Me.BtnStart.Size = New System.Drawing.Size(76, 23)
         Me.BtnStart.TabIndex = 8
@@ -477,7 +478,7 @@ Partial Class FrmMain
         '
         'btnStopLog
         '
-        Me.btnStopLog.Location = New System.Drawing.Point(-1, 50)
+        Me.btnStopLog.Location = New System.Drawing.Point(0, 50)
         Me.btnStopLog.Name = "btnStopLog"
         Me.btnStopLog.Size = New System.Drawing.Size(76, 23)
         Me.btnStopLog.TabIndex = 80
@@ -491,6 +492,10 @@ Partial Class FrmMain
         'TmrGetDataFromFs
         '
         Me.TmrGetDataFromFs.Enabled = True
+        '
+        'tmrtime
+        '
+        Me.tmrtime.Enabled = True
         '
         'FrmMain
         '
@@ -578,5 +583,6 @@ Partial Class FrmMain
     Friend WithEvents tmrWriteReadLog As System.Windows.Forms.Timer
     Friend WithEvents TmrGetDataFromFs As System.Windows.Forms.Timer
     Friend WithEvents WeatherToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tmrtime As System.Windows.Forms.Timer
 
 End Class

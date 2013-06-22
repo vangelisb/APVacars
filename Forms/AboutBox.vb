@@ -14,7 +14,7 @@
         '    properties dialog (under the "Project" menu).
         Me.LabelProductName.Text = My.Application.Info.ProductName
         Me.LabelVersion.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
-        Me.LabelCopyright.Text = My.Application.Info.Copyright
+        Me.LabelCopyright.Text = String.Format("Module Version {0}", GetPageAsStringsingle("moduleversion"))
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = "Another Phpvms Acars created from Vangelis Boulasikis" & vbCrLf & vbCrLf & "APVA is using FSUIPC Client DLL for .NET " & _
             vbCrLf & "By Paul Henty" & vbCrLf & vbCrLf & _
@@ -30,4 +30,7 @@
         Me.Close()
     End Sub
 
+    Private Sub LabelCompanyName_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LabelCompanyName.Click
+
+    End Sub
 End Class

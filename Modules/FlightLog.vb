@@ -14,70 +14,85 @@ Module FlightLog
     Public fuelused As String
     Public arpt As String = ""
     Public pilotid As String
+    Public aircraftused As String
+    Public landingrate As String
     Public Sub pirepdecode(ByVal data As String)
-        Dim document As XmlReader = New XmlTextReader(data)
+        Try
+            Dim document As XmlReader = New XmlTextReader(data)
 
-        'loop through the xml file
-        While (document.Read())
+            'loop through the xml file
+            While (document.Read())
 
-            Dim type = document.NodeType
+                Dim type = document.NodeType
 
-            'if node type was element
-            If (type = XmlNodeType.Element) Then
+                'if node type was element
+                If (type = XmlNodeType.Element) Then
 
-                'if the loop found a <Flightnumber> tag
-                If (document.Name = "PilotID") Then
+                    'if the loop found a <Flightnumber> tag
+                    If (document.Name = "PilotID") Then
 
-                    pilotid = document.ReadInnerXml.ToString()
+                        pilotid = document.ReadInnerXml.ToString()
 
+                    End If
+                    If (document.Name = "Flightnumber") Then
+
+                        flightnumber = document.ReadInnerXml.ToString()
+
+                    End If
+
+                    If (document.Name = "Departure") Then
+
+                        departure = document.ReadInnerXml.ToString()
+
+                    End If
+
+                    If (document.Name = "Destination") Then
+
+                        destination = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "AircraftRegistration") Then
+
+                        Aircraftid = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "Route") Then
+
+                        route = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "Flighttime") Then
+
+                        flighttime = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "FuelUsed") Then
+
+                        fuelused = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "Landingrate") Then
+
+                        landingrate = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "AircraftUsed") Then
+
+                        aircraftused = document.ReadInnerXml.ToString()
+
+                    End If
+                    If (document.Name = "log") Then
+
+                        log = document.ReadInnerXml.ToString()
+
+                    End If
                 End If
-                If (document.Name = "Flightnumber") Then
 
-                    flightnumber = document.ReadInnerXml.ToString()
-
-                End If
-
-                If (document.Name = "Departure") Then
-
-                    departure = document.ReadInnerXml.ToString()
-
-                End If
-
-                If (document.Name = "Destination") Then
-
-                    destination = document.ReadInnerXml.ToString()
-
-                End If
-                If (document.Name = "AircraftRegistration") Then
-
-                    Aircraftid = document.ReadInnerXml.ToString()
-
-                End If
-                If (document.Name = "Route") Then
-
-                    route = document.ReadInnerXml.ToString()
-
-                End If
-                If (document.Name = "Flighttime") Then
-
-                    flighttime = document.ReadInnerXml.ToString()
-
-                End If
-                If (document.Name = "FuelUsed") Then
-
-                    fuelused = document.ReadInnerXml.ToString()
-
-                End If
-                If (document.Name = "log") Then
-
-                    log = document.ReadInnerXml.ToString()
-
-                End If
-            End If
-
-        End While
-        document.Close()
-
+            End While
+            document.Close()
+        Catch ex As Exception
+            MsgBox("No file has been selected")
+        End Try
 
     End Sub
     Public Sub sendlog()
@@ -86,7 +101,8 @@ Module FlightLog
         MsgBox(GetPageAsString("pirep", "&pilotID=" & _
                             My.Settings.PilotId & "&flightNumber=" & _
                             flightnumber & "&depICAO=" & departure & "&arrICAO=" & destination & "&aircraftreg=" & aircraftreg & _
-                            "&route=" & route & "&flightTime=" & flighttime & "&log=" & log & "&fuelused=" & fuelused & "&passengers=" & passengers & ""))
+                            "&route=" & route & "&flightTime=" & flighttime & "&log=" & log & "&fuelused=" & fuelused & "&pax=" & passengers & "&landingrate=" & FlightLog.landingrate & ""))
+
 
     End Sub
 End Module
