@@ -4,7 +4,8 @@ Imports System.Data.OleDb
 
 Module FsuipcData
 
-
+    Public pause As Offset(Of Integer) = New FSUIPC.Offset(Of Integer)(&H264)
+    Public simrate As Offset(Of Int16) = New Offset(Of Int16)(&HC1A)
     Public parkingbrake As Offset(Of Int16) = New FSUIPC.Offset(Of Int16)(&HBC8)
     Public gear As Offset(Of Integer) = New FSUIPC.Offset(Of Integer)(&HBE8)
     Public stall As Offset(Of BitArray) = New FSUIPC.Offset(Of BitArray)(&H36C, 2)
@@ -32,8 +33,17 @@ Module FsuipcData
     Public fuelconsumed As String
     Public fuelconsumedrounded As String
 
+    Public Function getpauseflag()
+
+        Return pause.Value > 0 ' 0 = Off, 1 = On.
+
+    End Function
+    Public Function getsimrate()
 
 
+        Return simrate.Value
+
+    End Function
     Public Function getparkingbrake()
 
         Return parkingbrake.Value > 0 ' 0 = Off, 1 = On.
@@ -195,7 +205,14 @@ Module FsuipcData
             FrmMain.chkoverspeed.Checked = getoverspeed()
             FrmMain.chkonground.Checked = getonground()
             FrmMain.chklandinglights.Checked = getlandinglights()
-
+            FrmMain.txtsimrate.Text = getsimrate()
+            FrmMain.chkpause.Checked = getpauseflag()
+            Dim elapsed As TimeSpan = UiFunctions.stopwatch.Elapsed
+            FrmMain.lblFlightTime.Text = String.Format("{0:00}:{1:00}", _
+                                  Math.Floor(elapsed.TotalHours), _
+                                  elapsed.Minutes, _
+                                  elapsed.Seconds, _
+                                  elapsed.Milliseconds)
         Catch ex As Exception
 
         End Try
@@ -209,6 +226,7 @@ Module FsuipcData
                 FrmMain.lblTAS.Text = getairspeed()
                 FrmMain.lblAlt.Text = getaltitude()
                 FrmMain.lblHdg.Text = getheading()
+                FrmMain.chkpause.Checked = getpauseflag()
                 If My.Settings.FuelWeight = "1" Then
                     FrmMain.lblfuel.Text = getfuellbs() & "Lbs"
                     fuelconsumed = fuelstarted - getfuellbs()

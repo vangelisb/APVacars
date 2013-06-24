@@ -12,6 +12,7 @@ Module UiFunctions
     Public startstatus = ""
     Public fsconectionstatus
     Public maxpax
+    Public stopwatch As New Stopwatch
     Public Function logname()
 
         Dim logfilename As String = (path & "\APVacars\" & ymd & "-" & FrmMain.lblDeparture.Text & "-" & FrmMain.lblArrival.Text & ".txt")
@@ -103,6 +104,7 @@ Module UiFunctions
         If FrmMain.lblFlightNumber.Text = vbNullString Then
             MsgBox("You must click on Get Flight")
         Else
+            stopwatch.Start()
             FrmMain.tmrWriteReadLog.Start()
             startTime = DateTime.Now()
             FrmMain.TmrAcars.Start()

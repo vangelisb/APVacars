@@ -4,7 +4,7 @@
   <description asmv2:iconFile="APVAcarsLogo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="APVA" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="APVA" version="1.0.0.2" language="neutral" processorArchitecture="x86" />
     <commandLine file="APVA.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="386048">
-      <assemblyIdentity name="APVA" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="390656">
+      <assemblyIdentity name="APVA" version="1.0.0.2" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>020uNOwfwwYURenlaSAcfAyX9qw=</dsig:DigestValue>
+        <dsig:DigestValue>F37M3PvG8lEepbFje3n4AP4vSr4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="el-GR\APVA.resources.dll" size="4096">
-      <assemblyIdentity name="APVA.resources" version="1.0.0.0" language="el-GR" processorArchitecture="x86" />
+      <assemblyIdentity name="APVA.resources" version="1.0.0.2" language="el-GR" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wBD92RTSmgXFXmiZ2M1ZRZU/g10=</dsig:DigestValue>
+        <dsig:DigestValue>QFoyv9y7aTkCa9zVSigR4/UWf7c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

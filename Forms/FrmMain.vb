@@ -15,7 +15,6 @@ Public Class FrmMain
     End Sub
 
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
         createfolder("reports")
         UiFunctions.Startup()
     End Sub
@@ -43,6 +42,7 @@ Public Class FrmMain
         UiFunctions.startflight()
         BtnStart.Visible = False
         btnStopLog.Visible = True
+
     End Sub
 
 #Region " Check States "
@@ -171,6 +171,75 @@ Public Class FrmMain
             My.Computer.FileSystem.WriteAllText(reportname, xml, True)
         End If
     End Sub
+    Private Sub txtsimrate_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtsimrate.TextChanged
+        If txtsimrate.Text = 64 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Slowest " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Slowest " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 128 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Half Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Half Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 256 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Normal " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Normal " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 512 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 2x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 2x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 1024 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 4x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 4x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 2048 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 8x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 8x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 4096 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 16x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 16x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 8192 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 32x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 32x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = 16384 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 64x Speed " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to 64x Speed " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        ElseIf txtsimrate.Text = -32768 Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Fastest " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Simrate set to Fastest " & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+        End If
+    End Sub
+
+    Private Sub chkpause_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkpause.CheckStateChanged
+        If chkpause.CheckState = CheckState.Checked Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Paused " & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Paused" & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+            stopwatch.Stop()
+        ElseIf chkpause.CheckState = CheckState.Unchecked Then
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Unpaused" & vbCrLf
+            My.Computer.FileSystem.WriteAllText(logname, vt, True)
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "Unpaused" & "*"
+            My.Computer.FileSystem.WriteAllText(reportname, xml, True)
+            stopwatch.Start()
+        End If
+    End Sub
 #End Region
 
     Private Sub btnSendLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSendLog.Click
@@ -193,11 +262,10 @@ Public Class FrmMain
 
     Private Sub tmrWriteReadLog_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrWriteReadLog.Tick
         Try
-            Dim span As TimeSpan = DateTime.Now.Subtract(startTime)
-            FsuipcData.flighttime = span.Hours.ToString & ":" & _
-            span.Minutes.ToString
-            lblFlightTime.Text = FsuipcData.flighttime
-
+            'Dim span As TimeSpan = DateTime.Now.Subtract(startTime)
+            'FsuipcData.flighttime = span.Hours.ToString & ":" & _
+            'span.Minutes.ToString
+            'lblFlightTime.Text = FsuipcData.flighttime
             Dim logfile = My.Computer.FileSystem.ReadAllText(logname)
             RtbLog.Text = logfile
             FsuipcData.DriveTmr()
@@ -235,4 +303,5 @@ Public Class FrmMain
         StatusLblPilotId.Text = My.Settings.PilotId
         StatusLblPilotId.Font = New Font(StatusLblPilotId.Font, FontStyle.Bold)
     End Sub
+
 End Class

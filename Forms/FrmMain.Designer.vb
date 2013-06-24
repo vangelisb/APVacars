@@ -75,6 +75,8 @@ Partial Class FrmMain
         Me.tmrWriteReadLog = New System.Windows.Forms.Timer(Me.components)
         Me.TmrGetDataFromFs = New System.Windows.Forms.Timer(Me.components)
         Me.tmrtime = New System.Windows.Forms.Timer(Me.components)
+        Me.txtsimrate = New System.Windows.Forms.TextBox()
+        Me.chkpause = New System.Windows.Forms.CheckBox()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.gbRTFI.SuspendLayout()
@@ -262,9 +264,9 @@ Partial Class FrmMain
         'lblFlightTime
         '
         Me.lblFlightTime.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.lblFlightTime.Location = New System.Drawing.Point(459, 17)
+        Me.lblFlightTime.Location = New System.Drawing.Point(448, 16)
         Me.lblFlightTime.Name = "lblFlightTime"
-        Me.lblFlightTime.Size = New System.Drawing.Size(44, 16)
+        Me.lblFlightTime.Size = New System.Drawing.Size(56, 15)
         Me.lblFlightTime.TabIndex = 17
         '
         'lblFlightTimeTag
@@ -348,10 +350,10 @@ Partial Class FrmMain
         'RtbLog
         '
         Me.RtbLog.Cursor = System.Windows.Forms.Cursors.Default
-        Me.RtbLog.Location = New System.Drawing.Point(0, 105)
+        Me.RtbLog.Location = New System.Drawing.Point(0, 103)
         Me.RtbLog.Name = "RtbLog"
         Me.RtbLog.ReadOnly = True
-        Me.RtbLog.Size = New System.Drawing.Size(591, 309)
+        Me.RtbLog.Size = New System.Drawing.Size(591, 311)
         Me.RtbLog.TabIndex = 6
         Me.RtbLog.Text = ""
         '
@@ -497,6 +499,23 @@ Partial Class FrmMain
         '
         Me.tmrtime.Enabled = True
         '
+        'txtsimrate
+        '
+        Me.txtsimrate.Location = New System.Drawing.Point(151, 220)
+        Me.txtsimrate.Name = "txtsimrate"
+        Me.txtsimrate.Size = New System.Drawing.Size(100, 20)
+        Me.txtsimrate.TabIndex = 84
+        '
+        'chkpause
+        '
+        Me.chkpause.AutoSize = True
+        Me.chkpause.Location = New System.Drawing.Point(151, 247)
+        Me.chkpause.Name = "chkpause"
+        Me.chkpause.Size = New System.Drawing.Size(76, 17)
+        Me.chkpause.TabIndex = 85
+        Me.chkpause.Text = "Pause flag"
+        Me.chkpause.UseVisualStyleBackColor = True
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -519,6 +538,8 @@ Partial Class FrmMain
         Me.Controls.Add(Me.chklandinglightonafl100)
         Me.Controls.Add(Me.chklandinglights)
         Me.Controls.Add(Me.btnStopLog)
+        Me.Controls.Add(Me.txtsimrate)
+        Me.Controls.Add(Me.chkpause)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -584,5 +605,7 @@ Partial Class FrmMain
     Friend WithEvents TmrGetDataFromFs As System.Windows.Forms.Timer
     Friend WithEvents WeatherToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tmrtime As System.Windows.Forms.Timer
+    Friend WithEvents txtsimrate As System.Windows.Forms.TextBox
+    Friend WithEvents chkpause As System.Windows.Forms.CheckBox
 
 End Class
