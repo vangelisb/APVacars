@@ -17,6 +17,7 @@ Public Class FrmMain
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         createfolder("reports")
         UiFunctions.Startup()
+
     End Sub
     Private Sub BtnGetFlight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGetFlight.Click
         UiFunctions.Connect()
@@ -35,8 +36,9 @@ Public Class FrmMain
         End If
     End Sub
     Private Sub TmrAcars_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrAcars.Tick
-        query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
+        query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
         "&groundSpeed=" & getairspeed() & "&heading=" & getheading() & "&altitude=" & getaltitude() & "&deptime=" & startTime & "&status=" & getflightstatus())
+        ProgressBar1.Value = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
     End Sub
     Private Sub BtnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStart.Click
         UiFunctions.startflight()

@@ -77,6 +77,7 @@ Partial Class FrmMain
         Me.tmrtime = New System.Windows.Forms.Timer(Me.components)
         Me.txtsimrate = New System.Windows.Forms.TextBox()
         Me.chkpause = New System.Windows.Forms.CheckBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.gbRTFI.SuspendLayout()
@@ -516,11 +517,19 @@ Partial Class FrmMain
         Me.chkpause.Text = "Pause flag"
         Me.chkpause.UseVisualStyleBackColor = True
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(345, 416)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(232, 23)
+        Me.ProgressBar1.TabIndex = 86
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(593, 439)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnSendLog)
         Me.Controls.Add(Me.BtnStart)
         Me.Controls.Add(Me.BtnGetFlight)
@@ -607,5 +616,6 @@ Partial Class FrmMain
     Friend WithEvents tmrtime As System.Windows.Forms.Timer
     Friend WithEvents txtsimrate As System.Windows.Forms.TextBox
     Friend WithEvents chkpause As System.Windows.Forms.CheckBox
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
 
 End Class
