@@ -36,9 +36,14 @@ Public Class FrmMain
         End If
     End Sub
     Private Sub TmrAcars_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrAcars.Tick
-        query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
+        Try
+            query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
         "&groundSpeed=" & getairspeed() & "&heading=" & getheading() & "&altitude=" & getaltitude() & "&deptime=" & startTime & "&status=" & getflightstatus())
         ProgressBar1.Value = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
+        Catch ex As Exception
+            Dim error1 As String = ErrorToString()
+            MsgBox(error1)
+        End Try
     End Sub
     Private Sub BtnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStart.Click
         UiFunctions.startflight()

@@ -62,37 +62,42 @@ Module UiFunctions
         End Try
     End Sub
     Public Sub Connect()
+
         Try
-            If My.Settings.VaWebSite = vbNullString Then
-                MsgBox("You havent typed in your VA Web Addres")
-            ElseIf My.Settings.PilotId = vbNullString Then
-                MsgBox("You havent typed in your Pilot ID")
-            ElseIf My.Settings.PilotPassword = vbNullString Then
-                MsgBox("You havent typed in your Password")
+            If GetPageAsString("verify", "&pilotID=" & My.Settings.PilotId & "&password=" & My.Settings.PilotPassword & "") = 0 Then
+                MsgBox("Your Username or Password is wrong")
             Else
-                My.Settings.FuelWeight = GetPageAsString("getsettings", "")
-                query = GetPageAsString("getbid", "&pilotID=" & My.Settings.PilotId)
-                Dim value() As String
-                value = Split(query, ";")
-                If value(0) = "1" Then
-                    FrmMain.lblFlightNumber.Text = value(1)
-                    FrmMain.lblDeparture.Text = value(4)
-                    FrmMain.lblArrival.Text = value(5)
-                    frmFlightInformation.lblFlightNumber.Text = value(1)
-                    frmFlightInformation.lblDeparture.Text = value(4)
-                    frmFlightInformation.lblArrival.Text = value(5)
-                    frmFlightInformation.lblDepartureTime.Text = value(7)
-                    frmFlightInformation.lblArrivalTime.Text = value(8)
-                    frmFlightInformation.lblAircraft.Text = value(9) & Chr(32) & value(2)
-                    FlightLog.Aircraftid = value(9)
-                    frmFlightInformation.lblFlightLevel.Text = value(3)
-                    frmFlightInformation.lblRoute.Text = value(6)
-                    aircraftreg = value(9)
-                    maxpax = value(11)
-                ElseIf value(0) = "2" Then
-                    MsgBox("Aircraft is our of service")
-                ElseIf value(0) = "3" Then
-                    MsgBox("You have no bids")
+                If My.Settings.VaWebSite = vbNullString Then
+                    MsgBox("You havent typed in your VA Web Addres")
+                ElseIf My.Settings.PilotId = vbNullString Then
+                    MsgBox("You havent typed in your Pilot ID")
+                ElseIf My.Settings.PilotPassword = vbNullString Then
+                    MsgBox("You havent typed in your Password")
+                Else
+                    My.Settings.FuelWeight = GetPageAsString("getsettings", "")
+                    query = GetPageAsString("getbid", "&pilotID=" & My.Settings.PilotId)
+                    Dim value() As String
+                    value = Split(query, ";")
+                    If value(0) = "1" Then
+                        FrmMain.lblFlightNumber.Text = value(1)
+                        FrmMain.lblDeparture.Text = value(4)
+                        FrmMain.lblArrival.Text = value(5)
+                        frmFlightInformation.lblFlightNumber.Text = value(1)
+                        frmFlightInformation.lblDeparture.Text = value(4)
+                        frmFlightInformation.lblArrival.Text = value(5)
+                        frmFlightInformation.lblDepartureTime.Text = value(7)
+                        frmFlightInformation.lblArrivalTime.Text = value(8)
+                        frmFlightInformation.lblAircraft.Text = value(9) & Chr(32) & value(2)
+                        FlightLog.Aircraftid = value(9)
+                        frmFlightInformation.lblFlightLevel.Text = value(3)
+                        frmFlightInformation.lblRoute.Text = value(6)
+                        aircraftreg = value(9)
+                        maxpax = value(11)
+                    ElseIf value(0) = "2" Then
+                        MsgBox("Aircraft is our of service")
+                    ElseIf value(0) = "3" Then
+                        MsgBox("You have no bids")
+                    End If
                 End If
             End If
         Catch ex As Exception
@@ -101,6 +106,8 @@ Module UiFunctions
         End Try
     End Sub
     Public Sub startflight()
+        FsuipcData.tookof = "false"
+        FsuipcData.departed = "false"
         If FrmMain.lblFlightNumber.Text = vbNullString Then
             MsgBox("You must click on Get Flight")
         Else
@@ -192,4 +199,7 @@ ErrHandler:
                 Resume ExitPoint
         End Select
     End Function
+    Public Sub showsettings()
+        FrmSettings.Show()
+    End Sub
 End Module

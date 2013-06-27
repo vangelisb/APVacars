@@ -26,8 +26,8 @@ Module FsuipcData
     Public aircraftused As Offset(Of String) = New Offset(Of String)(&H3D00, 48)
     Public startTime As DateTime
     Public flighttime As String
-    Dim tookof As String = "false"
-    Dim departed As String = "false"
+    Public tookof As String = "false"
+    Public departed As String = "false"
     Public fuelstarted As String
     Public fuelended As String
     Public fuelconsumed As String
