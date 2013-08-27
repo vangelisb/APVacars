@@ -3,7 +3,7 @@ Imports System.Xml
 
 Module FlightLog
     Public path As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-    Public di As DirectoryInfo = New DirectoryInfo(path & "\GSA")
+    Public di As DirectoryInfo = New DirectoryInfo(path & "\APVacars")
     Public flightnumber As String
     Public departure As String
     Public destination As String

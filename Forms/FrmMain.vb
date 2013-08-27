@@ -39,7 +39,12 @@ Public Class FrmMain
         Try
             query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
         "&groundSpeed=" & getairspeed() & "&heading=" & getheading() & "&altitude=" & getaltitude() & "&deptime=" & startTime & "&status=" & getflightstatus())
-        ProgressBar1.Value = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
+            Dim progbar As String = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
+            If progbar > 100 Then
+                progbar = 100
+            End If
+            ProgressBar1.Value = progbar
+            Label1.Text = progbar
         Catch ex As Exception
             Dim error1 As String = ErrorToString()
             MsgBox(error1)
@@ -269,10 +274,7 @@ Public Class FrmMain
 
     Private Sub tmrWriteReadLog_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmrWriteReadLog.Tick
         Try
-            'Dim span As TimeSpan = DateTime.Now.Subtract(startTime)
-            'FsuipcData.flighttime = span.Hours.ToString & ":" & _
-            'span.Minutes.ToString
-            'lblFlightTime.Text = FsuipcData.flighttime
+          
             Dim logfile = My.Computer.FileSystem.ReadAllText(logname)
             RtbLog.Text = logfile
             FsuipcData.DriveTmr()

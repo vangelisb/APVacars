@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="391680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="392192">
       <assemblyIdentity name="APVA" version="1.0.0.4" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>imihKvpVqqzfD/4dx8gaiiQ23eA=</dsig:DigestValue>
+        <dsig:DigestValue>SRdmd5QRvZW3f2u6YQc9onFN4mo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2OQR+SU8gniJyA1NBlP15qBdWxY=</dsig:DigestValue>
+        <dsig:DigestValue>/6ZfLckHCIAvPoFg5jjjxFUn5No=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

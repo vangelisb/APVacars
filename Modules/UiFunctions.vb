@@ -26,11 +26,11 @@ Module UiFunctions
         Return reportfilename
     End Function
     Public Sub Startup()
-
+        System.Windows.Forms.Application.CurrentCulture = New System.Globalization.CultureInfo("EN-US")
         Dim version As String = webrequesttoget("http://baggelis.com/versionAPva.php?apvaversion=apvaversion")
 
         If version > My.Application.Info.Version.ToString Then
-            Dim box = MsgBox("There is a new version of APVA", MsgBoxStyle.OkCancel)
+            Dim box = MsgBox("There is a new version of APVA do you want to download it now ?", MsgBoxStyle.OkCancel)
             If box = DialogResult.OK Then
                 Process.Start("http://www.baggelis.com/APVacars.zip")
                 FrmMain.Close()

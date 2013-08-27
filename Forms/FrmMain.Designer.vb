@@ -78,6 +78,7 @@ Partial Class FrmMain
         Me.txtsimrate = New System.Windows.Forms.TextBox()
         Me.chkpause = New System.Windows.Forms.CheckBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.gbRTFI.SuspendLayout()
@@ -524,11 +525,21 @@ Partial Class FrmMain
         Me.ProgressBar1.Size = New System.Drawing.Size(232, 23)
         Me.ProgressBar1.TabIndex = 86
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(399, 397)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 87
+        Me.Label1.Text = "Label1"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(593, 439)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnSendLog)
         Me.Controls.Add(Me.BtnStart)
@@ -617,5 +628,6 @@ Partial Class FrmMain
     Friend WithEvents txtsimrate As System.Windows.Forms.TextBox
     Friend WithEvents chkpause As System.Windows.Forms.CheckBox
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
