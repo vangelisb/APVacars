@@ -44,7 +44,6 @@ Public Class FrmMain
                 progbar = 100
             End If
             ProgressBar1.Value = progbar
-            Label1.Text = progbar
         Catch ex As Exception
             Dim error1 As String = ErrorToString()
             MsgBox(error1)
@@ -92,9 +91,9 @@ Public Class FrmMain
         If chkonground.CheckState = CheckState.Checked And getairspeed() <= 0 Then
             'Do Nothing
         ElseIf chkonground.CheckState = CheckState.Checked And getairspeed() > 0 Then
-            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "You Landed @ " & Chr(32) & getairspeed() & Chr(32) & "Knots" & Chr(32) & "and with" & Chr(32) & getverticalspeed() & Chr(32) & "Vertival Speed" & vbCrLf
+            Dim vt As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "You Landed @ " & Chr(32) & getairspeed() & Chr(32) & "Knots" & Chr(32) & "and with" & Chr(32) & getverticalspeed() & Chr(32) & "Vertical Speed" & vbCrLf
             My.Computer.FileSystem.WriteAllText(logname, vt, True)
-            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "You Landed @ " & Chr(32) & getairspeed() & Chr(32) & "Knots" & Chr(32) & "and with" & Chr(32) & getverticalspeed() & Chr(32) & "Vertival Speed" & "*"
+            Dim xml As String = DateTime.Now.ToString("HH:mm") & Chr(32) & "You Landed @ " & Chr(32) & getairspeed() & Chr(32) & "Knots" & Chr(32) & "and with" & Chr(32) & getverticalspeed() & Chr(32) & "Vertical Speed" & "*"
             My.Computer.FileSystem.WriteAllText(reportname, xml, True)
             FlightLog.landingrate = getverticalspeed()
         ElseIf chkonground.CheckState = CheckState.Unchecked And getairspeed() <= 0 Then
@@ -313,4 +312,7 @@ Public Class FrmMain
         StatusLblPilotId.Font = New Font(StatusLblPilotId.Font, FontStyle.Bold)
     End Sub
 
+    Private Sub RtbLog_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RtbLog.TextChanged
+
+    End Sub
 End Class

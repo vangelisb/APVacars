@@ -87,5 +87,6 @@ C:\Users\Vangelisb\Desktop\git\APVacars\bin\Debug\APVA.exe.config
 C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.exe
 C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.xml
 C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.pdb
-C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\APVA.vbprojResolveAssemblyReference.cache
-C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\APVA.vbproj.GenerateResource.Cache
+C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\GenerateResource.write.1.tlog

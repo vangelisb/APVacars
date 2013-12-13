@@ -198,7 +198,7 @@ Module FsuipcData
         Try
 
             FSUIPCConnection.Process()
-
+            checklandinglights()
             FrmMain.chkbrakes.Checked = getparkingbrake()
             FrmMain.chkgear.Checked = getgear()
             FrmMain.chkstall.Checked = getstall()
