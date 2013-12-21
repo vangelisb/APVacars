@@ -78,6 +78,8 @@ Partial Class FrmMain
         Me.txtsimrate = New System.Windows.Forms.TextBox()
         Me.chkpause = New System.Windows.Forms.CheckBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.lblerror = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.gbRTFI.SuspendLayout()
@@ -102,7 +104,7 @@ Partial Class FrmMain
         'PilotInfoToolStripMenuItem
         '
         Me.PilotInfoToolStripMenuItem.Name = "PilotInfoToolStripMenuItem"
-        Me.PilotInfoToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.PilotInfoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PilotInfoToolStripMenuItem.Text = "Pilot Info"
         '
         'FlightInformationToolStripMenuItem
@@ -524,11 +526,24 @@ Partial Class FrmMain
         Me.ProgressBar1.Size = New System.Drawing.Size(232, 23)
         Me.ProgressBar1.TabIndex = 86
         '
+        'BackgroundWorker1
+        '
+        Me.BackgroundWorker1.WorkerSupportsCancellation = True
+        '
+        'lblerror
+        '
+        Me.lblerror.AutoSize = True
+        Me.lblerror.Location = New System.Drawing.Point(346, 421)
+        Me.lblerror.Name = "lblerror"
+        Me.lblerror.Size = New System.Drawing.Size(0, 13)
+        Me.lblerror.TabIndex = 87
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(593, 439)
+        Me.Controls.Add(Me.lblerror)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnSendLog)
         Me.Controls.Add(Me.BtnStart)
@@ -617,5 +632,7 @@ Partial Class FrmMain
     Friend WithEvents txtsimrate As System.Windows.Forms.TextBox
     Friend WithEvents chkpause As System.Windows.Forms.CheckBox
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents lblerror As System.Windows.Forms.Label
 
 End Class

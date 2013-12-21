@@ -17,6 +17,11 @@ Public Class FrmMain
     Private Sub FrmMain_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         createfolder("reports")
         UiFunctions.Startup()
+        Try
+            DBFunctions.sendlogin()
+        Catch ex As Exception
+
+        End Try
 
     End Sub
     Private Sub BtnGetFlight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGetFlight.Click
@@ -36,18 +41,10 @@ Public Class FrmMain
         End If
     End Sub
     Private Sub TmrAcars_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrAcars.Tick
-        Try
-            query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
-        "&groundSpeed=" & getairspeed() & "&heading=" & getheading() & "&altitude=" & getaltitude() & "&deptime=" & startTime & "&status=" & getflightstatus())
-            Dim progbar As String = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
-            If progbar > 100 Then
-                progbar = 100
-            End If
-            ProgressBar1.Value = progbar
-        Catch ex As Exception
-            Dim error1 As String = ErrorToString()
-            MsgBox(error1)
-        End Try
+        If BackgroundWorker1.IsBusy Then
+            Exit Sub
+        End If
+        BackgroundWorker1.RunWorkerAsync()
     End Sub
     Private Sub BtnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStart.Click
         UiFunctions.startflight()
@@ -311,8 +308,26 @@ Public Class FrmMain
         StatusLblPilotId.Text = My.Settings.PilotId
         StatusLblPilotId.Font = New Font(StatusLblPilotId.Font, FontStyle.Bold)
     End Sub
+    Private Sub BackgroundWorker1_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        Try
+            query = GetPageAsString("liveupdate", "&pilotID=" & My.Settings.PilotId & "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & _
+        "&groundSpeed=" & getairspeed() & "&heading=" & getheading() & "&altitude=" & getaltitude() & "&deptime=" & startTime & "&status=" & getflightstatus())
+            Dim progbar As String = GetPageAsString("progressbar", "&depICAO=" & lblDeparture.Text & "&arrICAO=" & lblArrival.Text & "&latitude=" & getlatitude() & "&longitude=" & getlongitude() & "")
+            If progbar > 100 Then
+                progbar = 100
+            End If
+            ProgressBar1.Value = progbar
+        Catch ex As Exception
+            Dim error1 As String = ErrorToString()
+            MsgBox(error1)
+        End Try
+    End Sub
 
-    Private Sub RtbLog_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RtbLog.TextChanged
+    Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles BackgroundWorker1.RunWorkerCompleted
 
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        DBFunctions.sendlogin()
     End Sub
 End Class

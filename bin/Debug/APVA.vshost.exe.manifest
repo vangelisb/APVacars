@@ -10,7 +10,7 @@
   <trustInfo>
     <security>
       <applicationRequestMinimum>
-        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
         <defaultAssemblyRequest permissionSetReference="Custom" />
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="391680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="394240">
       <assemblyIdentity name="APVA" version="1.0.0.5" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>IBDHIfWvIvGbjJuiFj3J0etOH+g=</dsig:DigestValue>
+        <dsig:DigestValue>Oc4P3uHpDpHIrVIrlaPmu0QHR7I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>XDwi8PBWHq+bZ6NBDbDiMhbJckA=</dsig:DigestValue>
+        <dsig:DigestValue>48vYfXE861OZ/Uf8uHZyX3jrh/U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

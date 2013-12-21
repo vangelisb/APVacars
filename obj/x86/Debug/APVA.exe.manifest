@@ -4,13 +4,13 @@
   <description asmv2:iconFile="APVAcarsLogo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="APVA" version="1.0.0.5" language="neutral" processorArchitecture="x86" />
+    <assemblyIdentity name="APVA" version="1.0.0.6" language="neutral" processorArchitecture="x86" />
     <commandLine file="APVA.exe" parameters="" />
   </entryPoint>
   <trustInfo>
     <security>
       <applicationRequestMinimum>
-        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
         <defaultAssemblyRequest permissionSetReference="Custom" />
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="391680">
-      <assemblyIdentity name="APVA" version="1.0.0.5" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APVA.exe" size="394240">
+      <assemblyIdentity name="APVA" version="1.0.0.6" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qGfmoGgLIkvlaC7YD9n7lwP2aG8=</dsig:DigestValue>
+        <dsig:DigestValue>mHXNHxtZvwbgMBTb8nQ/fcAssKU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="el-GR\APVA.resources.dll" size="4096">
-      <assemblyIdentity name="APVA.resources" version="1.0.0.5" language="el-GR" processorArchitecture="x86" />
+      <assemblyIdentity name="APVA.resources" version="1.0.0.6" language="el-GR" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pXIvZDgC2agkDOi5vSOZc5xr7k8=</dsig:DigestValue>
+        <dsig:DigestValue>XFODwYdZZ3GaHTOLbZq4OiZUuIE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

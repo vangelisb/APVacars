@@ -5,6 +5,7 @@ Imports System.Xml.XPath
 Imports System.Xml
 
 Module DBFunctions
+    Dim logincookie As CookieContainer
     Public Function GetPageAsString(ByVal action, ByVal calls) As String
 
         Dim request As HttpWebRequest
@@ -15,7 +16,7 @@ Module DBFunctions
         Try
             ' Create the web request  
             request = DirectCast(WebRequest.Create(My.Settings.VaWebSite & "/action.php/APVacars?data=" & action & calls), HttpWebRequest)
-
+            request.CookieContainer = logincookie
             ' Get response  
             response = DirectCast(request.GetResponse(), HttpWebResponse)
 
@@ -45,7 +46,7 @@ Module DBFunctions
         Try
             ' Create the web request  
             request = DirectCast(WebRequest.Create(My.Settings.VaWebSite & "/action.php/APVacars?data=" & action), HttpWebRequest)
-
+            request.CookieContainer = logincookie
             ' Get response  
             response = DirectCast(request.GetResponse(), HttpWebResponse)
 
@@ -65,6 +66,35 @@ Module DBFunctions
         Return result
 
     End Function
+    Public Sub sendlogin()
+
+
+        Dim postData As String = "email=" & My.Settings.PilotId & "&password=" & My.Settings.PilotPassword & "&redir=index.php%2Fprofile&action=login&submit=Log+In"
+        Dim tempCookies As New CookieContainer
+        Dim encoding As New UTF8Encoding
+        Dim byteData As Byte() = encoding.GetBytes(postData)
+
+        Dim postReq As HttpWebRequest = DirectCast(WebRequest.Create(My.Settings.VaWebSite & "/index.php/login"), HttpWebRequest)
+        postReq.Method = "POST"
+        postReq.KeepAlive = True
+        postReq.CookieContainer = tempCookies
+        postReq.ContentType = "application/x-www-form-urlencoded"
+        postReq.Referer = My.Settings.VaWebSite & "/index.php/login"
+        postReq.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; ru; rv:1.9.2.3) Gecko/20100401 Firefox/4.0 (.NET CLR 3.5.30729)"
+        postReq.ContentLength = byteData.Length
+
+        Dim postreqstream As Stream = postReq.GetRequestStream()
+        postreqstream.Write(byteData, 0, byteData.Length)
+        postreqstream.Close()
+        Dim postresponse As HttpWebResponse
+
+        postresponse = DirectCast(postReq.GetResponse(), HttpWebResponse)
+        tempCookies.Add(postresponse.Cookies)
+        logincookie = tempCookies
+        Dim postreqreader As New StreamReader(postresponse.GetResponseStream())
+
+        Dim thepage As String = postreqreader.ReadToEnd
+    End Sub
 
     Public Function webrequesttoget(ByVal site) As String
 
@@ -96,7 +126,7 @@ Module DBFunctions
         Return result
 
     End Function
-     Public Sub downloadmetar(ByRef icao As String, ByRef postto As String)
+    Public Sub downloadmetar(ByRef icao As String, ByRef postto As String)
 
         Dim request As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("http://metar.vatsim.net/metar.php?id=" & icao)
         Dim response As System.Net.HttpWebResponse = request.GetResponse

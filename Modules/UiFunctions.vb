@@ -39,7 +39,6 @@ Module UiFunctions
 
         fsuipcconnect()
 
-
     End Sub
     Public Sub fsuipcconnect()
         Try
@@ -94,9 +93,11 @@ Module UiFunctions
                         aircraftreg = value(9)
                         maxpax = value(11)
                     ElseIf value(0) = "2" Then
-                        MsgBox("Aircraft is our of service")
+                        FrmMain.lblerror.Text = "Aircraft is our of service"
+                        FrmMain.lblerror.BackColor = Color.Red
                     ElseIf value(0) = "3" Then
-                        MsgBox("You have no bids")
+                        FrmMain.lblerror.Text = "You have no bids"
+                        FrmMain.lblerror.BackColor = Color.Red
                     End If
                 End If
             End If
@@ -202,4 +203,5 @@ ErrHandler:
     Public Sub showsettings()
         FrmSettings.Show()
     End Sub
+    
 End Module

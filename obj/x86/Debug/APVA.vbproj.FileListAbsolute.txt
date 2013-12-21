@@ -90,3 +90,4 @@ C:\Users\Vangelisb\Desktop\git\APVacars\obj\x86\Debug\APVA.pdb
 C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Vangelisb\Documents\GitHub\APVacars\obj\x86\Debug\APVA.TrustInfo.xml
